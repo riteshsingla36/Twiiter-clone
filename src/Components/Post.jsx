@@ -70,7 +70,7 @@ const Container = styled.div`
     gap: 1rem;
     border: 1px solid blue;
     word-break: break-all;
-    padding: 0.5rem;
+    padding: 0.5rem 0.9rem;
     &:hover {
       background-color: #ededed;
     }

@@ -66,6 +66,7 @@ const Container = styled.div`
   display: flex;
   border: 1px solid red;
   padding: 0.5rem;
+
   img {
     width: 3rem;
     height: 3rem;
