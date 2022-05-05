@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import banner from "../assets/twitter-signup.png"
 import logo from "../assets/twitter-logo.png"
 import googlelogo from "../assets/Google_Icon.webp"
 import applelogo from "../assets/apple-logo.png"
 import styled from "styled-components";
+import 'antd/dist/antd.css';
+import { Modal } from 'antd';
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const navigate = useNavigate()
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     <Container>
       <div>
@@ -29,7 +48,33 @@ const Signup = () => {
         </EmailSignup>
 
         <ExtraSmall>By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use.</ExtraSmall>
+
+        <GoogleSignup onClick={() => {
+          showModal()
+        }}>
+          <GoogleText>Sign in</GoogleText>
+        </GoogleSignup>
       </div>
+
+      <Modal visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} footer={null}>
+        <h1>Sign in to Twitter</h1>
+        <GoogleSignup>
+          <Image src={googlelogo} alt="google" />
+          <GoogleText>Sign in with Google</GoogleText>
+        </GoogleSignup>
+        <GoogleSignup>
+          <AppleImage src={applelogo} alt="img" />
+          <AppleText>Sign up with Apple</AppleText>
+        </GoogleSignup>
+        <GoogleSignup>
+          <GoogleText>Next</GoogleText>
+        </GoogleSignup>
+        <GoogleSignup>
+          <GoogleText>Forgot Password ?</GoogleText>
+        </GoogleSignup>
+
+      </Modal>
+
     </Container>
   )
 };
@@ -51,8 +96,8 @@ const Small = styled(Title)`
 `
 
 const GoogleSignup = styled.div`
-  width:50%;
-  padding: 0.4em 0.5em;
+  width:60%;
+  padding : 10px 10px;
   border: 1px solid #d1c9c9;
   border-radius: 40px;
   color: black;
